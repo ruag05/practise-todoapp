@@ -1,5 +1,7 @@
 import React from 'react'
 import './Todo.css'
+import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 
 export default function Todo( {todo, index, deleteTodoID, toggledTodo}) {    
     function handleDelete(){        
@@ -18,23 +20,22 @@ export default function Todo( {todo, index, deleteTodoID, toggledTodo}) {
     }
     return (
         <div>
-            <React.Fragment>                
-                <td style={{width: '10px'}}>
-                    {index}
-                </td>
-                <td style={{width: '10px'}}>
-                    <input type="checkbox" checked={todo.isComplete} onChange={() => {handleToggle()}}></input>
-                </td>
-                <td style={{width: '200px'}}>
-                    {renderTitle()}
-                </td>                
-                <td style={{width: '100px'}}>
-                    <button style={{width: '90px'}}
-                   
-                    onClick={() => {handleDelete()}}
-                    >Delete</button>
-                </td>
-            </React.Fragment>                      
+            <Table>               
+                <tbody>
+                    <tr style={{textAlign:"center"}}>
+                        <td style={{width: '50px'}}>{index}</td>
+                        <td style={{width: '50px'}}>
+                            <input type="checkbox" checked={todo.isComplete}
+                            onChange={() => {handleToggle()}}></input>
+                        </td>
+                        <td>{renderTitle()}</td>
+                        <td style={{width: '100px'}}>
+                            <Button variant="danger" style={{width: '90px'}} onClick={() => {handleDelete()}}
+                            >Delete</Button></td>
+                    </tr>                    
+                </tbody>    
+            </Table>
+                                
         </div>
     )
 }
