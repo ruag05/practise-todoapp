@@ -8,6 +8,14 @@ export default function Todo( {todo, index, deleteTodoID, toggledTodo}) {
     function handleToggle(todoCompleted){
         toggledTodo(todo);
     }
+
+    function renderTitle(){
+        if(todo.isComplete){
+            return <s>{todo.title}</s>
+        } else {
+            return todo.title
+        }
+    }
     return (
         <div>
             <React.Fragment>                
@@ -18,9 +26,8 @@ export default function Todo( {todo, index, deleteTodoID, toggledTodo}) {
                     <input type="checkbox" checked={todo.isComplete} onChange={() => {handleToggle()}}></input>
                 </td>
                 <td style={{width: '200px'}}>
-                    {todo.title}
-                </td>
-                
+                    {renderTitle()}
+                </td>                
                 <td style={{width: '100px'}}>
                     <button style={{width: '90px'}}
                    
